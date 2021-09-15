@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import SignUp from './Components/User/Signup';
+import Signin from './Components/User/Login';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
+
+  var history = createBrowserHistory();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+       <Router history={history}>
+      <Switch>
+        <Route exact path="/">
+          {/* <Home/> */}
+        </Route>
+        <Route exact path="/sign-in">
+          <Signin/>
+        </Route>
+        <Route exact path="/sign-up">
+          <SignUp/>
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard/>
+        </Route>
+      </Switch>
+      </Router>
+    </>
   );
 }
 
